@@ -1,7 +1,12 @@
 import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from  'react-router-dom'
+import {useContext} from 'react'
+import {UserContext} from '../context/app.context'
 
 function MyNav(props) {
+
+const {user} = useContext(UserContext)
+
 return (
 	<Navbar  bg="light"  expand="lg">
 		<Navbar.Toggle  aria-controls="basic-navbar-nav"  />
@@ -10,7 +15,7 @@ return (
 				<Link  to="/">Todos</Link>
 				<Link  style={{marginLeft: '10px'}}  to="/add-form">Add Todo</Link>
 				{
-					props.user ? (
+					user ? (
 						<button onClick={props.onLogout}>Logout</button>
 					) : (
 						<>
